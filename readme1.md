@@ -24,6 +24,12 @@ Step1: - Open a new terminal >
 - In dist folder > we have everything like index.html then the controller script
 - For Parcel v2 > replace defer with type='module' in here :<script defer src="src/js/controller.js"></script>
 - Now we no longer need html file from outside
-- ALL we need to think about is controler file from js folder
-- First making API call in controller.js
--
+
+* ALL we need to think about is controler file from js folder
+
+  - First making API call in controller.js
+  - go the > https://forkify-api.herokuapp.com/v2
+  - generate api key
+  - get single recipe from here > https://forkify-api.herokuapp.com/api/v2/recipes/:id
+  - we will have first response and result in json format showRecipe()
+  -
