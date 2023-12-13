@@ -29,7 +29,15 @@ Step1: - Open a new terminal >
 
   - First making API call in controller.js
   - go the > https://forkify-api.herokuapp.com/v2
-  - generate api key
+  - generate api key > cbf7e09f-ab3f-4e2d-a712-a8f52bef4f89 my key()
   - get single recipe from here > https://forkify-api.herokuapp.com/api/v2/recipes/:id
-  - we will have first response and result in json format showRecipe()
-  -
+  - create a showRecipe function with asyn and await
+  - call the showRecipe() and we will have first response and result in json format
+  - Now creare a wrong ID in the api link to test error message and status
+  - lets use the error message and status
+  - now format the data to be nicer: create a new object based on status object which has better variable names, git rid of underscore
+  - create a new recipe variable with data.data.recipe
+  - reformat underscroe variables with better variable names
+  - console.log(recipe) to test new created variable names result
+  - now, get different api for search query url > https://forkify-api.herokuapp.com/api/v2/recipes?search=pizza&key=<insert your key>
+  - take a random ID from search query url and replace with the previus id to test a different recipe result
