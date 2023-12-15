@@ -15,13 +15,25 @@ const timeout = function (s) {
 // https://forkify-api.herokuapp.com/v2
 
 ///////////////////////////////////////
+
+const renderSpinner = function (parentEl) {
+  const markup = `
+  <div class="spinner">
+          <svg>
+            <use href="${icons}#icon-loader"></use>
+          </svg>
+        </div> -->
+  `;
+  parentEl.innerHTML = '';
+  parentEl.insertAdjacentHTML('afterbegin', markup);
+};
 // console.log('Test'); // check if the percel set is working in dev console
-
 // make first api call - Get recipe/Delete recipe
-
 // create a function to use aysnc and await
 const showRecipe = async function () {
   try {
+    // Loading recipe
+    renderSpinner(recipeContainer);
     const res = await fetch(
       `https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bcc3e`
       // `https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886`
