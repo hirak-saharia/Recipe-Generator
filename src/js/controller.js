@@ -34,10 +34,17 @@ const renderSpinner = function (parentEl) {
 // create a function to use aysnc and await
 const showRecipe = async function () {
   try {
+    // get dynamic id from the #
+    const id = window.location.hash.slice(1);
+    console.log(id);
+    // when there is no id using gaurd clauses
+    if (!id) return;
+
     // Loading recipe
     renderSpinner(recipeContainer);
     const res = await fetch(
-      `https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bcc3e`
+      `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
+      // `https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bcc3e`
       // `https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886`
     );
     // convert the result to json
@@ -164,4 +171,10 @@ const showRecipe = async function () {
   }
 };
 
-showRecipe();
+// showRecipe();
+
+// Listen the for the event for # changes
+// window.addEventListener('hashchange', showRecipe);
+// window.addEventListener('load', showRecipe); // load pages event
+// with optimized way or nicer way to write these two event or when we have multiple load event
+['hashchange', 'load'].forEach(ev => window.addEventListener(ev, showRecipe));
