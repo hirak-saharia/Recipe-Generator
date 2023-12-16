@@ -1,6 +1,8 @@
 // import icons from '../img/icons.svg'; // Parcel 1
 import icons from 'url:../img/icons.svg'; // Parcel 2
 console.log(icons); //Path :http://localhost:1234/icons.dfd7a6db.svg?1702616166437
+import 'core-js/stable'; // polifilling everything else
+import 'regenerator-runtime/runtime'; // polyfilling async/await
 
 const recipeContainer = document.querySelector('.recipe');
 
