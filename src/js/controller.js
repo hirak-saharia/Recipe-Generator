@@ -1,3 +1,5 @@
+import * as model from './model.js';
+
 // import icons from '../img/icons.svg'; // Parcel 1
 import icons from 'url:../img/icons.svg'; // Parcel 2
 console.log(icons); //Path :http://localhost:1234/icons.dfd7a6db.svg?1702616166437
@@ -39,36 +41,38 @@ const showRecipe = async function () {
     console.log(id);
     // when there is no id using gaurd clauses
     if (!id) return;
+    renderSpinner(recipeContainer);
 
     // Loading recipe
-    renderSpinner(recipeContainer);
-    const res = await fetch(
-      `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
-      // `https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bcc3e`
-      // `https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886`
-    );
-    // convert the result to json
-    const data = await res.json();
+    await model.loadRecipe(id); //call the function loadRecipe from model.js
+    const { recipe } = model.state;
+    // const res = await fetch(
+    //   `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
+    //   // `https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bcc3e`
+    //   // `https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886`
+    // );
+    // // convert the result to json
+    // const data = await res.json();
 
-    // create error message when there is a wrong id in api call
-    // error as alert window
-    if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+    // // create error message when there is a wrong id in api call
+    // // error as alert window
+    // if (!res.ok) throw new Error(`${data.message} (${res.status})`);
 
-    // console.log(res, data);
+    // // console.log(res, data);
 
-    // reformat underscroe variables with better variable names
-    let { recipe } = data.data;
-    recipe = {
-      id: recipe.id,
-      title: recipe.title,
-      publisher: recipe.publisher,
-      source_url: recipe.source_url,
-      image: recipe.image_url,
-      servings: recipe.servings,
-      cookingTime: recipe.cooking_time,
-      ingredients: recipe.ingredients,
-    };
-    console.log(recipe);
+    // // reformat underscroe variables with better variable names
+    // let { recipe } = data.data;
+    // recipe = {
+    //   id: recipe.id,
+    //   title: recipe.title,
+    //   publisher: recipe.publisher,
+    //   source_url: recipe.source_url,
+    //   image: recipe.image_url,
+    //   servings: recipe.servings,
+    //   cookingTime: recipe.cooking_time,
+    //   ingredients: recipe.ingredients,
+    // };
+    // console.log(recipe);
 
     // 2. Rendering Recipe
     const markup = `<figure class="recipe__fig">
