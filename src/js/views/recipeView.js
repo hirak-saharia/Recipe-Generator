@@ -138,6 +138,7 @@ class RecipeView {
     // recipeContainer.innerHTML = '';
     // recipeContainer.insertAdjacentHTML('afterbegin', markup);
   }
+  // Refactord code from map(){}
   #generateMarkupIngredient(ing) {
     return `
       <li class="recipe__ingredient">
