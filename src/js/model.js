@@ -1,6 +1,7 @@
 import { async } from 'regenerator-runtime';
 // exporting state from here - exported for using in controller.js
 import { API_URL } from './config';
+import { getJSON } from './helpers';
 
 export const state = {
   recipe: {}, // empty object at the begining
@@ -9,13 +10,15 @@ export const state = {
 // load recipe - fecthing recipe data from forkify api
 export const loadRecipe = async function (id) {
   try {
-    const res = await fetch(`${API_URL}/${id}`);
-    // convert the result to json
-    const data = await res.json();
+    const data = await getJSON(`${API_URL}/${id}`);
 
-    // create error message when there is a wrong id in api call
-    // error as alert window
-    if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+    // const res = await fetch(`${API_URL}/${id}`);
+    // // convert the result to json
+    // const data = await res.json();
+
+    // // create error message when there is a wrong id in api call
+    // // error as alert window
+    // if (!res.ok) throw new Error(`${data.message} (${res.status})`);
 
     // console.log(res, data);
 
@@ -33,6 +36,8 @@ export const loadRecipe = async function (id) {
     };
     console.log(state.recipe);
   } catch (err) {
-    alert(err);
+    // alert(err);
+    // temporary error handling
+    console.error(`${err} 😮`);
   }
 };
